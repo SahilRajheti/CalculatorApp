@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced Calculator — Sahil</title>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#061217" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="app">
+    <main class="calc-panel" role="application" aria-label="Advanced Calculator">
+      <div class="toolbar">
+        <div class="left-tools">
+          <button id="toggleSci" class="tool">Sci</button>
+          <button id="voiceBtn" class="tool" title="Voice input">🎤</button>
+          <button id="unitsBtn" class="tool" title="Unit converter">⇄</button>
+        </div>
+
+        <div class="center-title">Advanced Calculator</div>
+
+        <div class="right-tools">
+          <select id="themeSelect" class="tool">
+            <option value="neon">Neon (default)</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="amoled">AMOLED</option>
+          </select>
+          <button id="installBtn" class="tool" style="display:none">Install</button>
+        </div>
+      </div>
+
+      <div class="display-wrap">
+        <div id="subdisplay" class="subdisplay"></div>
+        <input id="display" class="display" type="text" inputmode="none" disabled />
+      </div>
+
+      <div id="buttons" class="buttons-grid"></div>
+
+      <div class="bottom-row">
+        <button id="clearAll" class="small">C</button>
+        <button id="backspace" class="small">⌫</button>
+        <button id="equals" class="equal">=</button>
+      </div>
+    </main>
+
+    <aside class="side-panel" aria-label="History and converter">
+      <section class="history">
+        <header>
+          <h3>History</h3>
+          <div>
+            <button id="copyAll" class="mini">Copy</button>
+            <button id="clearHistory" class="mini">Clear</button>
+          </div>
+        </header>
+        <div id="historyList" class="history-list">
+          <div class="empty">No history yet — calculate something.</div>
+        </div>
+      </section>
+
+      <section class="ai">
+        <h4>AI / Quick Query</h4>
+        <input id="aiInput" placeholder="E.g. What is 25% of 300? or Convert 5 kg to lb" />
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button id="aiAsk" class="mini">Ask</button>
+          <button id="aiOpenAI" class="mini">Use OpenAI (optional)</button>
+        </div>
+        <div id="aiOutput" class="ai-output"></div>
+      </section>
+    </aside>
+  </div>
+
+  <!-- Modals -->
+  <div id="unitsModal" class="modal hidden">
+    <div class="modal-card">
+      <h4>Unit Converter</h4>
+      <div class="row">
+        <input id="unitValue" type="number" placeholder="Value" />
+        <select id="unitFrom"></select>
+        <select id="unitTo"></select>
+      </div>
+      <div class="row"><button id="convRun" class="mini">Convert</button><button id="convClose" class="mini">Close</button></div>
+      <div id="convResult" class="conv-result"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="theme.js"></script>
+  <script src="ai.js"></script>
+  <script src="pwa.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
